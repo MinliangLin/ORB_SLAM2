@@ -1131,4 +1131,12 @@ void ORBextractor::ComputePyramid(cv::Mat image)
 
 }
 
+extern "C" {
+    int mytest() {
+        static ORBextractor ex(0, 0, 1, 0, 0);
+        ex.nlevels++;
+        return ex.GetLevels();
+    }
+}
+
 } //namespace ORB_SLAM

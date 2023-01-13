@@ -5,7 +5,6 @@ cmake .. -DCMAKE_BUILD_TYPE=Release
 make -j
 
 echo
-echo "Test: should print 1"
+echo "Test:"
 cd ..
 python3 test.py
-
