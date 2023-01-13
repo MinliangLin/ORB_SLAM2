@@ -112,5 +112,10 @@ protected:
 
 } //namespace ORB_SLAM
 
+extern "C" {
+int mytest() {
+    return 1;
+}
+}
 #endif
 
