@@ -1134,14 +1134,20 @@ void ORBextractor::ComputePyramid(cv::Mat image)
 } //namespace ORB_SLAM
 
 #include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
 
 namespace py = pybind11;
-int mytest() {
+int static_inc() {
     static ORB_SLAM2::ORBextractor ex(0, 0, 1, 0, 0);
     ex.nlevels++;
     return ex.GetLevels();
 }
 
+int test_size(py::array_t<double> img) {
+    return img.size();
+}
+
 PYBIND11_MODULE(ORB_SLAM2, m) {
-    m.def("mytest", &mytest, "A test function");
+    m.def("static_inc", &static_inc, "A test function");
+    m.def("test_size", &test_size, "A test function");
 }

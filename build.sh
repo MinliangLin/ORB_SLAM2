@@ -3,8 +3,8 @@ mkdir -p build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make -j
+cd ..
 
 echo
 echo "Test:"
-cd ..
 python3 test.py
