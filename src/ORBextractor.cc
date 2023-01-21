@@ -1131,12 +1131,17 @@ void ORBextractor::ComputePyramid(cv::Mat image)
 
 }
 
-extern "C" {
-    int mytest() {
-        static ORBextractor ex(0, 0, 1, 0, 0);
-        ex.nlevels++;
-        return ex.GetLevels();
-    }
+} //namespace ORB_SLAM
+
+#include <pybind11/pybind11.h>
+
+namespace py = pybind11;
+int mytest() {
+    static ORB_SLAM2::ORBextractor ex(0, 0, 1, 0, 0);
+    ex.nlevels++;
+    return ex.GetLevels();
 }
 
-} //namespace ORB_SLAM
+PYBIND11_MODULE(ORB_SLAM2, m) {
+    m.def("mytest", &mytest, "A test function");
+}
