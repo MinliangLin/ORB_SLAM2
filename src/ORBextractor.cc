@@ -59,6 +59,7 @@
 #include <opencv2/features2d/features2d.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <vector>
+#include <iostream>
 
 #include "ORBextractor.h"
 
@@ -1143,7 +1144,11 @@ int static_inc() {
     return ex.GetLevels();
 }
 
-int test_size(py::array_t<double> img) {
+int test_size(py::array_t<uint8_t> img) {
+    cv::Mat a(2, 2, CV_8UC1, img.request().ptr);
+    cv::Mat b(2, 2, CV_8UC1, &img);
+    cout << "a " << a << endl;
+    cout << "b " << b << endl;
     return img.size();
 }
 
